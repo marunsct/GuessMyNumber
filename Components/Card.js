@@ -8,7 +8,7 @@ export default class Card extends Component {
 
   render() {
     return (
-      <View style={({ ...style.Card }, { ...this.props.style })}>
+      <View style={{ ...style.Card , ...this.props.style }}>
         {this.props.children}
       </View>
     );

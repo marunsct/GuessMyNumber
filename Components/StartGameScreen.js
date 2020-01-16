@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { View, TextInput, Text, StyleSheet, Button } from "react-native";
 
+import Card from "./Card";
+
 export default class StartGameScreen extends Component {
   constructor(props) {
     super(props);
@@ -13,7 +15,7 @@ export default class StartGameScreen extends Component {
     return (
       <View style={styles.screen}>
         <Text style={styles.title}>Lets begin!!!</Text>
-        <View style={styles.inputContainer}>
+        <Card style={styles.inputContainer}>
           <Text>Enter a Number</Text>
           <TextInput
             style={{
@@ -31,7 +33,7 @@ export default class StartGameScreen extends Component {
             <Button title="Reset" style={styles.button} />
             <Button title="Confirm" style={styles.button} />
           </View>
-        </View>
+        </Card>
       </View>
     );
   }
@@ -39,10 +41,8 @@ export default class StartGameScreen extends Component {
 
 const styles = StyleSheet.create({
   screen: {
-    //flex: 1,
     padding: 10,
     alignItems: "center"
-    //alignSelf: "center"
   },
   buttonContainer: {
     flexDirection: "row",

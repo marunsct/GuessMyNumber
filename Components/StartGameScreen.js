@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, TextInput, Text, StyleSheet, Button } from "react-native";
 
-export default class StartGameScreen {
+export default class StartGameScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,12 +12,24 @@ export default class StartGameScreen {
   render() {
     return (
       <View style={styles.screen}>
-        <Text style={styles.title}>Enter a Number</Text>
+        <Text style={styles.title}>Lets begin!!!</Text>
         <View style={styles.inputContainer}>
-          <TextInput />
+          <Text>Enter a Number</Text>
+          <TextInput
+            style={{
+              height: 35,
+              marginTop: 15,
+              shadowColor: "black",
+              shadowOffset: { width: 0, height: 2 },
+              shadowRadius: 6,
+              shadowOpacity: 0.26,
+              backgroundColor: "white",
+              elevation: 5
+            }}
+          />
           <View style={styles.buttonContainer}>
-            <Button title="Reset" />
-            <Button title="Confirm" />
+            <Button title="Reset" style={styles.button} />
+            <Button title="Confirm" style={styles.button} />
           </View>
         </View>
       </View>
@@ -27,15 +39,18 @@ export default class StartGameScreen {
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
+    //flex: 1,
     padding: 10,
     alignItems: "center"
+    //alignSelf: "center"
   },
   buttonContainer: {
     flexDirection: "row",
     width: "100%",
     justifyContent: "space-between",
-    paddingHorizontal: 15
+    paddingHorizontal: 15,
+    paddingVertical: 15,
+    marginTop: 10
   },
   title: {
     fontSize: 20,
@@ -45,13 +60,16 @@ const styles = StyleSheet.create({
   inputContainer: {
     width: 300,
     maxWidth: "80%",
-    shadowColor:"black",
-    shadowOffset:{ width:0 , height:2},
-    shadowRadius:6,
-    shadowOpacity:0.26,
+    shadowColor: "black",
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 6,
+    shadowOpacity: 0.26,
     backgroundColor: "white",
     elevation: 5,
     padding: 20,
-    borderRadius:10
+    borderRadius: 10
+  },
+  button: {
+    width: 80
   }
 });

@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import React from "react";
+import { StyleSheet, View } from "react-native";
 
 import Header from "./Components/header";
 import GameScreen from "./Components/StartGameScreen";
@@ -7,8 +7,10 @@ import GameScreen from "./Components/StartGameScreen";
 export default function App() {
   return (
     <View style={styles.screen}>
-      <Header title="Guess The Number"/>
-      <GameScreen />
+      <Header title="Guess The Number" />
+      <View style={styles.inputScreen}>
+        <GameScreen />
+      </View>
     </View>
   );
 }
@@ -16,11 +18,17 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center"
   },
   screen: {
-    flex : 1
+    flex: 1
+  },
+  inputScreen: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row"
   }
 });

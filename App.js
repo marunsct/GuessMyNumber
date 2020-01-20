@@ -26,10 +26,10 @@ const styles = StyleSheet.create({
     flex: 1
   },
   inputScreen: {
-    flex: 1,
+    flex: 1
     //backgroundColor: "black",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row"
+    //justifyContent: "center",
+    //alignItems: "center",
+    //flexDirection: "row"
   }
 });

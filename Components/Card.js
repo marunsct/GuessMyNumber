@@ -8,7 +8,7 @@ export default class Card extends Component {
 
   render() {
     return (
-      <View style={{ ...style.Card , ...this.props.style }}>
+      <View style={{ ...styles.Card , ...this.props.style }}>
         {this.props.children}
       </View>
     );
@@ -17,13 +17,14 @@ export default class Card extends Component {
 
 const styles = StyleSheet.create({
   card: {
+   // backgroundColor: "black",
     shadowColor: "black",
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 6,
     shadowOpacity: 0.26,
     backgroundColor: "white",
     elevation: 5,
-    padding: 20,
+    padding: 1,
     borderRadius: 10
   }
 });

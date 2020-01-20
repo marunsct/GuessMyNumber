@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
   },
   inputScreen: {
     flex: 1,
+    //backgroundColor: "black",
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row"

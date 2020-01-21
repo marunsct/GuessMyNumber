@@ -5,7 +5,8 @@ import {
   StyleSheet,
   Button,
   TouchableWithoutFeedback,
-  Keyboard
+  Keyboard,
+  Alert
 } from "react-native";
 
 import Card from "./Card";
@@ -40,10 +41,10 @@ export default class StartGameScreen extends Component {
   confirmHandler() {
     var chosenNumner = parseInt(this.state.enteredText);
 
-    if (chosenNumner === NaN || chosenNumner <= 0 || chosenNumner > 99) {
-      this.setState({
-        enteredText: ""
-      });
+    if (isNaN(chosenNumner) || chosenNumner <= 0 || chosenNumner > 99) {
+      Alert.alert("Invalid Number", "Enter a Number between 1 and 99", [
+        { text: "Okay", style: "destructive", onPress: this.reset.bind(this) }
+      ]);
       return;
     }
 
@@ -58,7 +59,16 @@ export default class StartGameScreen extends Component {
     console.log("hiiiii");
     console.log(this.state);
     if (this.state.confirmSelection === true) {
-      return <Text>Chosen Number is {this.state.selectedValue}</Text>;
+      return (
+        <View style={styles.confirmScreen}>
+          <Text style={{ marginVertical: 20 }} color={Colours.accent}>
+            Chosen Number is {this.state.selectedValue}
+          </Text>
+          <View style={styles.button}>
+            <Button title="Start" color={Colours.primary} />
+          </View>
+        </View>
+      );
     }
   }
   render() {
@@ -132,7 +142,7 @@ const styles = StyleSheet.create({
     shadowColor: "black",
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 6,
-    shadowOpacity: 0.26,
+    shadowOpacity: 0.3,
     backgroundColor: "white",
     elevation: 5,
     padding: 20,
@@ -146,6 +156,23 @@ const styles = StyleSheet.create({
   input: {
     width: 50,
     textAlign: "center"
+  },
+  confirmScreen: {
+    marginTop: 100,
+    padding: 1,
+    //backgroundColor: "grey",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 350,
+    maxWidth: "85%",
+    shadowColor: "black",
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 6,
+    shadowOpacity: 0.3,
+    backgroundColor: "white",
+    elevation: 5,
+    padding: 20,
+    borderRadius: 10
   }
 });
 /*

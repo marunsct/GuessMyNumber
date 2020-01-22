@@ -45,6 +45,7 @@ export default class StartGameScreen extends Component {
       Alert.alert("Invalid Number", "Enter a Number between 1 and 99", [
         { text: "Okay", style: "destructive", onPress: this.reset.bind(this) }
       ]);
+      Keyboard.dismiss();
       return;
     }
 
@@ -58,6 +59,7 @@ export default class StartGameScreen extends Component {
   checkConfirmation() {
     console.log("hiiiii");
     console.log(this.state);
+    Keyboard.dismiss();
     if (this.state.confirmSelection === true) {
       return (
         <View style={styles.confirmScreen}>

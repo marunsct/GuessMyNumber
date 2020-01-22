@@ -61,11 +61,11 @@ export default class StartGameScreen extends Component {
     if (this.state.confirmSelection === true) {
       return (
         <View style={styles.confirmScreen}>
-          <Text style={{ marginVertical: 20 }} color={Colours.accent}>
+          <Text style={{ marginVertical: 20, color: Colours.accent }}>
             Chosen Number is {this.state.selectedValue}
           </Text>
           <View style={styles.button}>
-            <Button title="Start" color={Colours.primary} />
+            <Button title="Start" style={{ color: Colours.primary }} />
           </View>
         </View>
       );

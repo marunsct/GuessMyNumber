@@ -12,6 +12,7 @@ import {
 import Card from "./Card";
 import Colours from "../Constants/colours";
 import Input from "../Components/Input";
+import NumberContainer from "../Components/NumberContainer";
 
 export default class StartGameScreen extends Component {
   constructor(props) {
@@ -51,8 +52,8 @@ export default class StartGameScreen extends Component {
 
     this.setState({
       selectedValue: chosenNumner,
-      confirmSelection: true,
-      enteredText: ""
+      confirmSelection: true
+      // enteredText: ""
     });
   }
 
@@ -64,10 +65,11 @@ export default class StartGameScreen extends Component {
       return (
         <View style={styles.confirmScreen}>
           <Text style={{ marginVertical: 20, color: Colours.accent }}>
-            Chosen Number is {this.state.selectedValue}
+            Chosen Number is
           </Text>
+          <NumberContainer text={this.state.selectedValue} />
           <View style={styles.button}>
-            <Button title="Start" style={{ color: Colours.primary }} />
+            <Button title="Start" color={Colours.primary} />
           </View>
         </View>
       );

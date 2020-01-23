@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 
 export default class NumberContainer extends Component {
   constructor(props) {
-    super(this.props);
+    super(props);
   }
   render() {
     return (
@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     shadowColor: "grey",
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.3,
-    shadowRadius: 5
+    shadowRadius: 5,
+    elevation: 5
   }
 });

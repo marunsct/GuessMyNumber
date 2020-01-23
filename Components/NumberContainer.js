@@ -4,6 +4,9 @@ import { View, Text, StyleSheet } from "react-native";
 export default class NumberContainer extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isLoading: true
+    };
   }
   render() {
     return (
@@ -24,6 +27,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 5,
     elevation: 5,
+    marginBottom: 5
+  },
+  textStyle: {
     marginBottom: 5
   }
 });

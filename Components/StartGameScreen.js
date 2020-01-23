@@ -43,11 +43,13 @@ export default class StartGameScreen extends Component {
   confirmHandler() {
     var chosenNumner = parseInt(this.state.enteredText);
 
+    Keyboard.dismiss();
+
     if (isNaN(chosenNumner) || chosenNumner <= 0 || chosenNumner > 99) {
       Alert.alert("Invalid Number", "Enter a Number between 1 and 99", [
         { text: "Okay", style: "destructive", onPress: this.reset.bind(this) }
       ]);
-      Keyboard.dismiss();
+
       return;
     }
 
@@ -61,7 +63,7 @@ export default class StartGameScreen extends Component {
   checkConfirmation() {
     console.log("hiiiii");
     console.log(this.state);
-    Keyboard.dismiss();
+    //Keyboard.dismiss();
     if (this.state.confirmSelection === true) {
       return (
         <View style={styles.confirmScreen}>

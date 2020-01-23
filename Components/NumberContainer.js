@@ -8,7 +8,7 @@ export default class NumberContainer extends Component {
   render() {
     return (
       <View style={styles.NumberContainer}>
-        <Text text={props.text} />
+        <Text>"hello there"</Text>
       </View>
     );
   }

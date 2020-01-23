@@ -14,7 +14,6 @@ export default class header extends Component {
   render() {
     return (
       <View style={styles.header}>
-        <Text>=</Text>
         <Text style={styles.headerText}>{this.props.title}</Text>
       </View>
     );

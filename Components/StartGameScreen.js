@@ -67,7 +67,7 @@ export default class StartGameScreen extends Component {
           <Text style={{ marginVertical: 20, color: Colours.accent }}>
             Chosen Number is
           </Text>
-          <NumberContainer text={this.state.selectedValue} />
+          <NumberContainer number="{this.state.selectedValue}" />
           <View style={styles.button}>
             <Button title="Start" color={Colours.primary} />
           </View>

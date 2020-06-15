@@ -22,6 +22,6 @@ const styles = StyleSheet.create({
     borderBottomColor: "grey",
     borderBottomWidth: 1,
     //borderBottomWidth: 1,
-    marginVertical: 10
-  }
+    marginVertical: 10,
+  },
 });

@@ -1,4 +1,8 @@
-import React, { Component } from "react";
+/* eslint-disable max-len */
+/* eslint-disable react/jsx-no-bind */
+/* eslint-disable no-console */
+/* eslint-disable consistent-return */
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -6,48 +10,51 @@ import {
   Button,
   TouchableWithoutFeedback,
   Keyboard,
-  Alert
-} from "react-native";
+  Alert,
+} from 'react-native';
 
-import Card from "./Card";
-import Colours from "../Constants/colours";
-import Input from "../Components/Input";
-import NumberContainer from "../Components/NumberContainer";
-import Header from "../Components/header";
+import Card from './Card';
+import Colours from '../Constants/colours';
+import Input from './Input';
+import NumberContainer from './NumberContainer';
+// import Header from './header';
 
 export default class StartGameScreen extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      enteredText: '',
+      selectedValue: '',
+      confirmSelection: '',
+    };
   }
-  state = {
-    enteredText: "",
-    selectedValue: "",
-    confirmSelection: ""
-  };
+
   numberInputHandler(text) {
-    //console.log("Hi" + text);
-    text = text.replace(/[^0-9]/g, "");
-    //console.log(text);
+    const enteredText = text.replace(/[^0-9]/g, '');
+    //  console.log(text);
     this.setState({
-      enteredText: text
+      enteredText,
     });
   }
 
   reset() {
     this.setState({
-      enteredText: "",
-      confirmSelection: false
+      enteredText: '',
+      confirmSelection: false,
     });
   }
 
   confirmHandler() {
-    var chosenNumner = parseInt(this.state.enteredText);
+    // eslint-disable-next-line react/no-access-state-in-setstate
+    const chosenNumner = parseInt(this.state.enteredText, 10);
 
     Keyboard.dismiss();
 
+    // eslint-disable-next-line no-restricted-globals
     if (isNaN(chosenNumner) || chosenNumner <= 0 || chosenNumner > 99) {
-      Alert.alert("Invalid Number", "Enter a Number between 1 and 99", [
-        { text: "Okay", style: "destructive", onPress: this.reset.bind(this) }
+      Alert.alert('Invalid Number', 'Enter a Number between 1 and 99', [
+        { text: 'Okay', style: 'destructive', onPress: this.reset.bind(this) },
       ]);
 
       return;
@@ -55,29 +62,35 @@ export default class StartGameScreen extends Component {
 
     this.setState({
       selectedValue: chosenNumner,
-      confirmSelection: true
-      // enteredText: ""
+      confirmSelection: true,
+      // enteredText: ''
     });
   }
 
   checkConfirmation() {
-    console.log("hiiiii");
+    // console.log('hiiiii');
     console.log(this.state);
-    //Keyboard.dismiss();
+    // Keyboard.dismiss();
     if (this.state.confirmSelection === true) {
       return (
         <View style={styles.confirmScreen}>
-          <Text style={{ marginVertical: 20, color: Colours.accent }}>
+          <Text style={{ marginTop: 20, color: Colours.accent }}>
             Chosen Number is
           </Text>
-          <NumberContainer number={this.state.selectedValue} />
+          <NumberContainer>{this.state.selectedValue}</NumberContainer>
           <View style={styles.button}>
-            <Button title="Start" color={Colours.primary} />
+            <Button
+              title="Start"
+              color={Colours.primary}
+              onPress={this.props.onStartGame.bind(this, this.state.selectedValue)}
+            // onPress={this.props.onStartGame(this.state.selectedValue)}
+            />
           </View>
         </View>
       );
     }
   }
+
   render() {
     return (
       <TouchableWithoutFeedback
@@ -126,72 +139,72 @@ export default class StartGameScreen extends Component {
 const styles = StyleSheet.create({
   screen: {
     padding: 1,
-    //backgroundColor: "grey",
-    alignItems: "center",
-    justifyContent: "center"
+    // backgroundColor: 'grey',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   buttonContainer: {
-    flexDirection: "row",
-    width: "100%",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-between',
     paddingVertical: 15,
-    marginTop: 10
+    marginTop: 10,
   },
   title: {
     fontSize: 20,
     marginVertical: 10,
     marginBottom: 30,
-    alignContent: "center"
+    alignContent: 'center',
   },
   inputContainer: {
     width: 350,
-    maxWidth: "85%",
-    shadowColor: "black",
+    maxWidth: '85%',
+    shadowColor: 'black',
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 6,
     shadowOpacity: 0.3,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     elevation: 5,
     padding: 20,
     borderRadius: 10,
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   button: {
-    width: 90
+    width: 90,
   },
   input: {
     width: 50,
-    textAlign: "center"
+    textAlign: 'center',
   },
   confirmScreen: {
     marginTop: 100,
     padding: 1,
-    //backgroundColor: "grey",
-    alignItems: "center",
-    justifyContent: "center",
+    // backgroundColor: 'grey',
+    alignItems: 'center',
+    justifyContent: 'center',
     width: 350,
-    maxWidth: "85%",
-    shadowColor: "black",
+    maxWidth: '85%',
+    shadowColor: 'black',
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 6,
     shadowOpacity: 0.3,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     elevation: 5,
     padding: 20,
-    borderRadius: 10
-  }
+    borderRadius: 10,
+  },
 });
 /*
           <TextInput
             style={{
               height: 35,
               marginTop: 15,
-              shadowColor: "black",
+              shadowColor: 'black',
               shadowOffset: { width: 0, height: 2 },
               shadowRadius: 6,
               shadowOpacity: 0.26,
-              backgroundColor: "white",
+              backgroundColor: 'white',
               elevation: 5
             }}/>
 

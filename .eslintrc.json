@@ -1,0 +1,34 @@
+{
+  "env": {
+    "jest": true,
+    "browser": true,
+    "es6": true,
+    "es2020": true
+  },
+  "extends": ["airbnb", "google"],
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "globals": {
+    "fetch": false
+  },
+  "plugins": [
+    // ...
+    "react-hooks"
+  ],
+  "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "no-use-before-define": "off",
+    "react/jsx-filename-extension": "off",
+    "react/prop-types": "off",
+    "comma-dangle": "off",
+    "react/destructuring-assignment": [
+      "error",
+      "never",
+      { "ignoreClassFields": true }
+    ],
+    "require-jsdoc": 0
+  }
+}

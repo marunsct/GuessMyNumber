@@ -17,6 +17,8 @@ import Card from './Card';
 import Colours from '../Constants/colours';
 import Input from './Input';
 import NumberContainer from './NumberContainer';
+import HeaderText from './HeaderText';
+import BodyText from './BodyText';
 // import Header from './header';
 
 export default class StartGameScreen extends Component {
@@ -99,9 +101,9 @@ export default class StartGameScreen extends Component {
         }}
       >
         <View style={styles.screen}>
-          <Text style={styles.title}>Lets begin!!!</Text>
+          <HeaderText style={styles.title}>Lets begin!!!</HeaderText>
           <Card style={styles.inputContainer}>
-            <Text>Enter a Number</Text>
+            <BodyText>Enter a Number</BodyText>
             <Input
               style={styles.input}
               blurOnSubmit
@@ -152,6 +154,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
+    fontFamily: 'OpenSans-Bold',
     marginVertical: 10,
     marginBottom: 30,
     alignContent: 'center',

@@ -1,5 +1,8 @@
-import React, { Component } from "react";
-import { TextInput, StyleSheet } from "react-native";
+/* eslint-disable no-useless-constructor */
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/prefer-stateless-function */
+import React, { Component } from 'react';
+import { TextInput, StyleSheet } from 'react-native';
 
 export default class Input extends Component {
   constructor(props) {
@@ -19,9 +22,9 @@ export default class Input extends Component {
 const styles = StyleSheet.create({
   input: {
     height: 30,
-    borderBottomColor: "grey",
+    borderBottomColor: 'grey',
     borderBottomWidth: 1,
-    //borderBottomWidth: 1,
+    // borderBottomWidth: 1,
     marginVertical: 10,
   },
 });

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 import Colours from '../Constants/colours';
+import HeaderText from './HeaderText';
 
 export default class header extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ export default class header extends Component {
   render() {
     return (
       <View style={styles.header}>
-        <Text style={styles.headerText}>{this.props.title}</Text>
+        <HeaderText style={styles.headerText}>{this.props.title}</HeaderText>
       </View>
     );
   }
@@ -33,5 +34,6 @@ const styles = StyleSheet.create({
   headerText: {
     color: 'black',
     fontSize: 18,
+    fontFamily: 'OpenSans-Bold'
   },
 });

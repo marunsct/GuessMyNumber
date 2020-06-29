@@ -1,5 +1,8 @@
+/* eslint-disable global-require */
 /* eslint-disable max-len */
 /* eslint-disable no-console */
+import * as Font from 'expo-font';
+import { AppLoading } from 'expo';
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
@@ -8,9 +11,19 @@ import StartGameScreen from './Components/StartGameScreen';
 import GameScreen from './Components/GameScreen';
 import GameOver from './Components/GameOver';
 
+const loadFont = () => Font.loadAsync({
+  'OpenSans-Bold': require('./assets/fonts/OpenSans-Bold.ttf'),
+  'OpenSans': require('./assets/fonts/OpenSans-Regular.ttf')
+});
+
 export default function App() {
   const [userNumber, setUserNumber] = useState();
   const [numRounds, setNumRounds] = useState(0);
+  const [fontLoaded, setFontLoaded] = useState(false);
+
+  if (!fontLoaded) {
+    return <AppLoading startAsync={loadFont} onFinish={() => setFontLoaded(true)} onError={(err) => console.log(err)} />;
+  }
 
   const startGameHandler = (selectedNumber) => {
     console.log(selectedNumber);

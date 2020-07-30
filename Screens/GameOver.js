@@ -6,7 +6,7 @@ import {
   View, Text, StyleSheet, Button, Image
 } from 'react-native';
 
-import BodyText from './BodyText';
+import BodyText from '../Components/BodyText';
 import Colours from '../Constants/colours';
 
 export default class GameOver extends Component {

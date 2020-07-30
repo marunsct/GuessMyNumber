@@ -11,14 +11,18 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   Alert,
+  ScrollView,
+  KeyboardAvoidingView,
+  Dimensions
 } from 'react-native';
 
-import Card from './Card';
+import Card from '../Components/Card';
 import Colours from '../Constants/colours';
-import Input from './Input';
-import NumberContainer from './NumberContainer';
-import HeaderText from './HeaderText';
-import BodyText from './BodyText';
+import Input from '../Components/Input';
+import NumberContainer from '../Components/NumberContainer';
+import HeaderText from '../Components/HeaderText';
+import BodyText from '../Components/BodyText';
+import RoundedButton from '../Components/RoundedButton';
 // import Header from './header';
 
 export default class StartGameScreen extends Component {
@@ -29,7 +33,11 @@ export default class StartGameScreen extends Component {
       enteredText: '',
       selectedValue: '',
       confirmSelection: '',
+      deviceWidth: Dimensions.get('window').width,
+      deviceHeight: Dimensions.get('window').height
     };
+
+    this.buttonWidth = { width: Dimensions.get('window').width / 4 };
   }
 
   numberInputHandler(text) {
@@ -81,9 +89,9 @@ export default class StartGameScreen extends Component {
           </Text>
           <NumberContainer>{this.state.selectedValue}</NumberContainer>
           <View style={styles.button}>
-            <Button
+            <RoundedButton
               title="Start"
-              color={Colours.primary}
+              // color={Colours.primary}
               onPress={this.props.onStartGame.bind(this, this.state.selectedValue)}
             // onPress={this.props.onStartGame(this.state.selectedValue)}
             />
@@ -95,45 +103,49 @@ export default class StartGameScreen extends Component {
 
   render() {
     return (
-      <TouchableWithoutFeedback
-        onPress={() => {
-          Keyboard.dismiss();
-        }}
-      >
-        <View style={styles.screen}>
-          <HeaderText style={styles.title}>Lets begin!!!</HeaderText>
-          <Card style={styles.inputContainer}>
-            <BodyText>Enter a Number</BodyText>
-            <Input
-              style={styles.input}
-              blurOnSubmit
-              autoCapitalize="none"
-              autoCorrect={false}
-              keyboardType="number-pad"
-              maxLength={2}
-              onChangeText={this.numberInputHandler.bind(this)}
-              value={this.state.enteredText}
-            />
-            <View style={styles.buttonContainer}>
-              <View style={styles.button}>
-                <Button
-                  title="Reset"
-                  color={Colours.accent}
-                  onPress={this.reset.bind(this)}
+      <ScrollView>
+        <KeyboardAvoidingView>
+          <TouchableWithoutFeedback
+            onPress={() => {
+              Keyboard.dismiss();
+            }}
+          >
+            <View style={styles.screen}>
+              <HeaderText style={styles.title}>Lets begin!!!</HeaderText>
+              <Card style={styles.inputContainer}>
+                <BodyText>Enter a Number</BodyText>
+                <Input
+                  style={styles.input}
+                  blurOnSubmit
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  keyboardType="number-pad"
+                  maxLength={2}
+                  onChangeText={this.numberInputHandler.bind(this)}
+                  value={this.state.enteredText}
                 />
-              </View>
-              <View style={styles.button}>
-                <Button
-                  title="Confirm"
-                  color={Colours.primary}
-                  onPress={this.confirmHandler.bind(this)}
-                />
-              </View>
+                <View style={styles.buttonContainer}>
+                  <View style={styles.button}>
+                    <Button
+                      title="Reset"
+                      color={Colours.accent}
+                      onPress={this.reset.bind(this)}
+                    />
+                  </View>
+                  <View style={styles.button}>
+                    <Button
+                      title="Confirm"
+                      color={Colours.primary}
+                      onPress={this.confirmHandler.bind(this)}
+                    />
+                  </View>
+                </View>
+              </Card>
+              {this.checkConfirmation()}
             </View>
-          </Card>
-          {this.checkConfirmation()}
-        </View>
-      </TouchableWithoutFeedback>
+          </TouchableWithoutFeedback>
+        </KeyboardAvoidingView>
+      </ScrollView>
     );
   }
 }
@@ -174,15 +186,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   button: {
-    width: 90,
+    width: 100,
   },
   input: {
     width: 50,
     textAlign: 'center',
   },
   confirmScreen: {
-    marginTop: 100,
-    padding: 1,
+    marginTop: 40,
     // backgroundColor: 'grey',
     alignItems: 'center',
     justifyContent: 'center',
@@ -196,7 +207,7 @@ const styles = StyleSheet.create({
     elevation: 5,
     padding: 20,
     borderRadius: 10,
-  },
+  }
 });
 /*
           <TextInput

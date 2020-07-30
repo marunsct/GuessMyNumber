@@ -7,9 +7,9 @@ import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import Header from './Components/header';
-import StartGameScreen from './Components/StartGameScreen';
-import GameScreen from './Components/GameScreen';
-import GameOver from './Components/GameOver';
+import StartGameScreen from './Screens/StartGameScreen';
+import GameScreen from './Screens/GameScreen';
+import GameOver from './Screens/GameOver';
 
 const loadFont = () => Font.loadAsync({
   'OpenSans-Bold': require('./assets/fonts/OpenSans-Bold.ttf'),
